@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Photo Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function preloadTheme() {
+        const storageKey = "app-theme";
+        const root = document.documentElement;
+        const storedTheme = localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+          root.classList.add("dark");
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/react-image-crop/dist/ReactCrop.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              background: {
+                light: "#f5f7fa",
+                dark: "#000000",
+              },
+              surface: {
+                light: "#ffffff",
+                dark: "#141414",
+              },
+              border: {
+                light: "#e5e7eb",
+                dark: "#262626",
+              },
+              text: {
+                primary: "#101828",
+                secondary: "#4b5563",
+                muted: "#6b7280",
+                inverted: "#f8fafc",
+              },
+              accent: {
+                primary: "#2563eb",
+                secondary: "#22d3ee",
+                success: "#10b981",
+                warning: "#f97316",
+              },
+            },
+            fontFamily: {
+              display: ["Inter", "Segoe UI", "sans-serif"],
+              sans: ["Inter", "Segoe UI", "sans-serif"],
+            },
+            boxShadow: {
+              "depth-light": "0 24px 48px rgba(15, 23, 42, 0.08)",
+              "depth-dark": "0 24px 48px rgba(0, 0, 0, 0.55)",
+            },
+            animation: {
+              "gradient-x": "gradient-x 10s ease infinite",
+            },
+            keyframes: {
+              "gradient-x": {
+                "0%, 100%": {
+                  "background-size": "200% 200%",
+                  "background-position": "left center",
+                },
+                "50%": {
+                  "background-size": "200% 200%",
+                  "background-position": "right center",
+                },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body
+    class="font-sans bg-background-light text-text-secondary transition-colors duration-500 dark:bg-background-dark dark:text-text-inverted"
+  >
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
